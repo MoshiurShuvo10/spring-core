@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    to enable all annotations of our entire project-->
+<!--    <context:annotation-config />-->
+
+    <beans>
+
+        <bean name="nstu" class="org.example.University" >
+            <property name="universityName" value="NSTU" />
+            <property name="universityLocation" value="Noakhali" />
+            <property name="totalDepartments" value="20" />
+        </bean>
+
+        <bean name="sust" class="org.example.University" >
+            <property name="universityName" value="SUST" />
+            <property name="universityLocation" value="Sylhet" />
+            <property name="totalDepartments" value="20" />
+        </bean>
+
+
+        <bean class="org.example.Student" name="student1" >
+            <property name="studentId">
+                <value>101</value>
+            </property>
+            <property name="studentName">
+                <value>Md. Moshiur Rahman</value>
+            </property>
+            <property name="studentAddress">
+                <value>Dhaka</value>
+            </property>
+            <property name="phoneNumbers">
+                <list>
+                    <value>123454</value>
+                    <value>123454</value>
+                    <value>123454</value>
+                </list>
+            </property>
+            <property name="courses">
+                <set>
+                    <value>C</value>
+                    <value>C++</value>
+                    <value>Java</value>
+                </set>
+            </property>
+            <property name="courseInstructors">
+                <map>
+                    <entry key="C" value="Instructor of C" />
+                    <entry key="C++" value="Instructor of C++" />
+                    <entry key="Java" value="Instructor of Java" />
+                </map>
+            </property>
+            <property name="university" ref="nstu" />
+        </bean>
+
+        <bean class="org.example.Student" name="student2" >
+            <property name="studentId">
+                <value>102</value>
+            </property>
+            <property name="studentName">
+                <value>Md. Maidul Islam</value>
+            </property>
+            <property name="studentAddress">
+                <value>Dhaka</value>
+            </property>
+            <property name="phoneNumbers">
+                <list>
+                    <value>0000</value>
+                    <value>1254</value>
+                    <value>124</value>
+                </list>
+            </property>
+            <property name="courses">
+                <set>
+                    <value>DSA</value>
+                    <value>Networking</value>
+                    <value>DSP</value>
+                </set>
+            </property>
+            <property name="courseInstructors">
+                <map>
+                    <entry key="DSA" value="Instructor of DSA" />
+                    <entry key="Networking" value="Instructor of Networking" />
+                    <entry key="DSP" value="Instructor of DSP" />
+                </map>
+            </property>
+            <property name="university" ref="nstu" />
+        </bean>
+
+        <!-- property value as an attribute-->
+        <bean class="org.example.Student" name="student3" >
+            <property name="studentId" value="103" />
+            <property name="studentName" value="Sadid" />
+            <property name="studentAddress" value="Savar" />
+            <property name="phoneNumbers">
+                <list>
+                    <value>34523543</value>
+                    <null />
+                </list>
+            </property>
+            <property name="courses">
+                <set>
+                    <value>Database Management System</value>
+                </set>
+            </property>
+            <property name="courseInstructors">
+                <map>
+                    <entry key="DBMS" value="DBMS Course Instructor"/>
+                </map>
+            </property>
+            <property name="university" ref="sust" />
+        </bean>
+
+        <!--to enable only @PostConstruct and @PreDestroy-->
+        <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+    </beans>
+
+</beans>
