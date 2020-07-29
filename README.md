@@ -53,7 +53,7 @@
     </bean>
     ```
     
-* Life Cycle of beans called by IOC container
+* Life Cycle of beans managed by IOC container
   * set the values
   * call init()
   * perform task
